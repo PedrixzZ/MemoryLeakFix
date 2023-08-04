@@ -24,4 +24,11 @@ public class MemoryLeakFixFabric implements ModInitializer {
     public void onInitialize() {
         MemoryLeakFix.init();
     }
+
+    // Método para limpar os buffers
+    public static void clearBuffers() {
+        synchronized (BUFFERS_TO_CLEAR) {
+            BUFFERS_TO_CLEAR.clear();
+        }
+    }
 }
