@@ -19,20 +19,30 @@ public abstract class Minecraft_freeBufferMixin {
      * Free the packets at the end of the tick
      */
 
-    // Make sure that there is a reference to release first!
     private boolean memoryLeakFix$tryRelease(FriendlyByteBuf buffer) {
-        if (!(((FriendlyByteBufAccessor) buffer).getSource() instanceof AbstractReferenceCountedByteBuf)) {
-            return buffer.refCnt() == 0 && buffer.release();
+        // Check if the buffer is already released
+        if (buffer.refCnt() == 0) {
+            return false;
         }
+
+        // Check if the buffer is an AbstractReferenceCountedByteBuf
+        if (!(buffer instanceof AbstractReferenceCountedByteBuf)) {
+            buffer.release();
+            return true;
+        }
+
         return true;
     }
 
-
-    @Inject(
-            method = "tick",
-            at = @At("RETURN")
-    )
+    @Inject(method = "tick", at = @At("RETURN"))
     private void memoryLeakFix$releaseBuffersAfterTick(CallbackInfo ci) {
-        MemoryLeakFixFabric.BUFFERS_TO_CLEAR.removeIf(this::memoryLeakFix$tryRelease);
+        // Use Iterator for direct removal of released buffers
+        var iterator = MemoryLeakFixFabric.BUFFERS_TO_CLEAR.iterator();
+        while (iterator.hasNext()) {
+            FriendlyByteBuf buffer = iterator.next();
+            if (!memoryLeakFix$tryRelease(buffer)) {
+                iterator.remove();
+            }
+        }
     }
 }
