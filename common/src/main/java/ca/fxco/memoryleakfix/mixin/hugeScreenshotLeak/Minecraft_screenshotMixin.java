@@ -17,7 +17,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.nio.ByteBuffer;
 
-@MinecraftRequirement(@VersionRange(minVersion = "1.17.0"))
+@MinecraftRequirement(@VersionRange(minVersion = "1.20.1"))
 @Environment(EnvType.CLIENT)
 @Mixin(Minecraft.class)
 public abstract class Minecraft_screenshotMixin {
