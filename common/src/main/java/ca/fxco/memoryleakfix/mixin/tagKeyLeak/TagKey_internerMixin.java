@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 /**
  * This fixes: <a href="https://bugs.mojang.com/browse/MC-248621">MC-248621</a>
  */
-@MinecraftRequirement(@VersionRange(minVersion = "1.18.2", maxVersion = "1.18.2"))
+@MinecraftRequirement(@VersionRange(minVersion = "1.20.1", maxVersion = "1.20.1"))
 @Mixin(value = TagKey.class, priority = 1500)
 public abstract class TagKey_internerMixin {
 
