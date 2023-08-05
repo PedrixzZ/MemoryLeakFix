@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.Shadow;
 import java.util.Map;
 import java.util.Optional;
 
-@MinecraftRequirement(@VersionRange(maxVersion = "1.19.3"))
+@MinecraftRequirement(@VersionRange(maxVersion = "1.20.1"))
 @Mixin(Brain.class)
 public abstract class Brain_clearMemoriesMixin implements ExtendBrain {
 
