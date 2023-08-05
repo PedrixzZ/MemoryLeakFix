@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@MinecraftRequirement(@VersionRange(maxVersion = "1.19.3"))
+@MinecraftRequirement(@VersionRange(maxVersion = "1.20.1"))
 @Mixin(Entity.class)
 public abstract class Entity_clearMemoriesMixin {
 
