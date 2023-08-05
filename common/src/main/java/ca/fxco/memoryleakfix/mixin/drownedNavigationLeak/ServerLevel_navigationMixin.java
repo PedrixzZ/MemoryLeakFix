@@ -18,7 +18,7 @@ import java.util.Set;
 /**
  * This fixes: <a href="https://bugs.mojang.com/browse/MC-202246">MC-202246</a>
  */
-@MinecraftRequirement(@VersionRange(minVersion = "1.16.3", maxVersion = "1.16.5"))
+@MinecraftRequirement(@VersionRange(minVersion = "1.16.3", maxVersion = "1.20.1"))
 @Mixin(ServerLevel.class)
 public abstract class ServerLevel_navigationMixin {
 
