@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.At;
 
 import java.util.function.Supplier;
 
-@MinecraftRequirement(@VersionRange(minVersion = "1.14.4"))
+@MinecraftRequirement(@VersionRange(minVersion = "1.20.1"))
 @Mixin(Biome.class)
 public abstract class Biome_threadLocalMixin {
 
